@@ -1,0 +1,20 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+xrdb ~/.Xresources &
+
+bspc monitor -d 01 02 03 04 05 06 07
+
+bspc config border_width         0
+bspc config window_gap           8
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+#AutoStart applications
+picom --config $HOME/.config/picom/picom.conf &
+feh --bg-tile ~/Downloads/asukawpp2.jpg &
+wal -n -i ~/Downloads/asukawpp2.jpg
+dunst &
+$HOME/.config/polybar/launch.sh &
+xsetroot -cursor_name left_ptr &
